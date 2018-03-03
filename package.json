@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/shuidao0001/learnWeb/issues"
   },
-  "homepage": "https://github.com/shuidao0001/learnWeb#readme"
+  "homepage": "https://github.com/shuidao0001/learnWeb#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
