@@ -1,0 +1,19 @@
+{
+  "name": "learnweb",
+  "version": "1.0.0",
+  "description": "实现http://www.fgm.cc/learn/的题目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://shuidao0001@github.com/shuidao0001/learnWeb.git"
+  },
+  "author": "shuidao0001",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shuidao0001/learnWeb/issues"
+  },
+  "homepage": "https://github.com/shuidao0001/learnWeb#readme"
+}
