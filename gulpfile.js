@@ -1,7 +1,8 @@
 //导入工具包 require('node_modules里对应模块')
 var gulp = require('gulp'), //本地安装gulp所用到的地方
     less = require('gulp-less'),
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    uglify = require('gulp-uglify');//  压缩js文件
  
 //
 gulp.task('myWebServer',function(){
@@ -14,9 +15,10 @@ gulp.task('myWebServer',function(){
 
 //定义一个testLess任务（自定义任务名称）
 gulp.task('testLess', function () {
-    gulp.src('src/css/style.less') //该任务针对的文件
+    gulp.src('src/**/*.less') //该任务针对的文件
         .pipe(less()) //该任务调用的模块
-        .pipe(gulp.dest('dist/css')); //将会在src/css下生成index.css
+        .pipe(gulp.dest('dist/')) //将会在src/css下生成index.css
+        .pipe(connect.reload())
 });
 
 //检查首页是否有更新，有的话就刷新
@@ -25,14 +27,21 @@ gulp.task('checkHtml', function(){
       .pipe(gulp.dest('dist/'))
       .pipe(connect.reload())
 })
-
-///////////////////////////////////////
-gulp.task('watch',function(){
-  gulp.watch('src/css/**/*.less',['testLess'])
-  gulp.watch('src/**/*.html',['checkHtml'])
+//
+gulp.task('minifyJs', function(){//压缩js文件
+  gulp.src('src/**/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/'))
+    .pipe(connect.reload())
 })
 ///////////////////////////////////////
-gulp.task('default',['testLess','watch','checkHtml','myWebServer']); //定义默认任务 elseTask为其他任务，该示例没有定义elseTask任务
+gulp.task('watch',function(){
+  gulp.watch('src/**/*.less',['testLess'])
+  gulp.watch('src/**/*.html',['checkHtml'])
+  gulp.watch('src/**/*.js',['minifyJs'])
+})
+///////////////////////////////////////
+gulp.task('default',['testLess','watch','checkHtml','minifyJs','myWebServer']); //定义默认任务 elseTask为其他任务，该示例没有定义elseTask任务
  
 //gulp.task(name[, deps], fn) 定义任务  name：任务名称 deps：依赖任务名称 fn：回调函数
 //gulp.src(globs[, options]) 执行任务处理的文件  globs：处理的文件路径(字符串或者字符串数组) 

@@ -1,0 +1,8 @@
+1、想完整的梳理一下前端
+2、选择实现一下http://www.fgm.cc/learn/
+3、通过gulp实现自动刷新等功能
+    安装node.js  使用npm功能
+    全局安装gulp  npm install gulp -g
+    查看gulp版本  gulp -v
+    手动创建gulpfile.js文件
+4、顺便学习less
